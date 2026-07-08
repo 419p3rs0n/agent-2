@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  app:
+    build: .
+    container_name: myapp
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
+    volumes:
+      - ./input:/input
+      - ./output:/output
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  ollama_data:
