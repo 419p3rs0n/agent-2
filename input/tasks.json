@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "category": "math",
+    "prompt": "What is 250 + 750?"
+  },
+  {
+    "id": 2,
+    "category": "general",
+    "prompt": "Explain what Docker Compose is in one sentence."
+  },
+  {
+    "id": 3,
+    "category": "coding",
+    "prompt": "Write a Python function that checks if a string is a palindrome."
+  }
+]

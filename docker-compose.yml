@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ollama:
     image: ollama/ollama:latest
@@ -10,25 +8,27 @@ services:
       - OLLAMA_HOST=0.0.0.0:11434
     volumes:
       - ollama_data:/root/.ollama
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/"]
-      interval: 5s
-      timeout: 10s
-      retries: 5
+    restart: unless-stopped
+    networks:
+      - app_network
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: myapp
     depends_on:
-      ollama:
-        condition: service_healthy
+      - ollama
     environment:
       - FIREWORKS_API_KEY=${FIREWORKS_API_KEY}
+      - FIREWORKS_BASE_URL=${FIREWORKS_BASE_URL:-https://api.fireworks.ai/inference/v1}
+      - ALLOWED_MODELS=${ALLOWED_MODELS:-accounts/fireworks/models/llama-v3-8b-instruct}
     volumes:
       - ./input:/input
       - ./output:/output
     networks:
       - app_network
+    restart: on-failure
 
 networks:
   app_network:
@@ -36,3 +36,4 @@ networks:
 
 volumes:
   ollama_data:
+    driver: local

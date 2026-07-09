@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "answer": "1000"
+    },
+    {
+        "id": 2,
+        "answer": "Docker Compose is a tool for defining and running multi-container Docker applications with ease, allowing users to define services, networks, and volumes in a single configuration file."
+    },
+    {
+        "id": 3,
+        "answer": "```python\ndef is_palindrome(s: str) -> bool:\n    \"\"\"\n    Checks if a given string is a palindrome.\n\n    Args:\n        s (str): The input string to check.\n\n    Returns:\n        bool: True if the string is a palindrome, False otherwise.\n    \"\"\"\n    return s == s[::-1]\n```"
+    }
+]
