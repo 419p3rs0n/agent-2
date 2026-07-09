@@ -1,14 +1,29 @@
 [
     {
         "id": 1,
-        "answer": "1000"
+        "answer": "250 + 750 = 1000.",
+        "route": "ollama",
+        "model": "llama3.2",
+        "confidence": 0.9,
+        "reason": "Complexity 20 fits local model",
+        "estimated_tokens": 6
     },
     {
         "id": 2,
-        "answer": "Docker Compose is a tool for defining and running multi-container Docker applications with ease, allowing users to define services, networks, and volumes in a single configuration file."
+        "answer": "Docker Compose is a tool for defining and running multi-container Docker applications with ease, allowing users to define services, networks, and volumes in a single configuration file.",
+        "route": "ollama",
+        "model": "llama3.2",
+        "confidence": 0.85,
+        "reason": "Complexity 30 fits local model",
+        "estimated_tokens": 10
     },
     {
         "id": 3,
-        "answer": "```python\ndef is_palindrome(s: str) -> bool:\n    \"\"\"\n    Checks if a given string is a palindrome.\n\n    Args:\n        s (str): The input string to check.\n\n    Returns:\n        bool: True if the string is a palindrome, False otherwise.\n    \"\"\"\n    return s == s[::-1]\n```"
+        "answer": "**Palindrome Checker Function**\n=====================================\n\nHere's a simple Python function to check if a given string is a palindrome:\n\n```python\ndef is_palindrome(s: str) -> bool:\n    \"\"\"\n    Checks if the input string is a palindrome.\n\n    Args:\n        s (str): The input string to be checked.\n\n    Returns:\n        bool: True if the string is a palindrome, False otherwise.\n    \"\"\"\n\n    # Remove any non-alphanumeric characters and convert to lowercase\n    cleaned_s = ''.join(c for c in s if c.isalnum()).lower()\n\n    # Compare the cleaned string with its reverse\n    return cleaned_s == cleaned_s[::-1]\n```\n\n**Example Use Cases**\n---------------------\n\n```python\nprint(is_palindrome(\"A man, a plan, a canal: Panama\"))  # True\nprint(is_palindrome(\"Not a palindrome\"))  # False\nprint(is_palindrome(\"Was it a car or a cat I saw?\"))  # True\n```\n\nThis function works by first cleaning the input string to remove any non-alphanumeric characters and converting it to lowercase. It then compares the cleaned string with its reverse (`cleaned_s[::-1]`). If they match, the original string is a palindrome, and the function returns `True`. Otherwise, it returns `False`.",
+        "route": "ollama",
+        "model": "llama3.2",
+        "confidence": 0.82,
+        "reason": "Complexity 35 fits local model",
+        "estimated_tokens": 15
     }
 ]
